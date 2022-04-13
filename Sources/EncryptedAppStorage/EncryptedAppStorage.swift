@@ -2,10 +2,10 @@ import SwiftUI
 
 @propertyWrapper
 public struct EncryptedAppStorage<Value: Codable>: DynamicProperty {
-    let key: String
+    private let key: String
     @State private var value: Value?
 
-    init(wrappedValue: Value? = nil, _ key: String) {
+    public init(wrappedValue: Value? = nil, _ key: String) {
         self.key = key
         // Set default value
         var initialValue = wrappedValue
