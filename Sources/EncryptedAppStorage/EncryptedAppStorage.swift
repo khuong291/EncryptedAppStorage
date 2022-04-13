@@ -1,7 +1,7 @@
 import SwiftUI
 
 @propertyWrapper
-struct EncryptedAppStorage<Value: Codable>: DynamicProperty {
+public struct EncryptedAppStorage<Value: Codable>: DynamicProperty {
     let key: String
     @State private var value: Value?
 
@@ -24,7 +24,7 @@ struct EncryptedAppStorage<Value: Codable>: DynamicProperty {
         self._value = State<Value?>(initialValue: initialValue)
     }
 
-    var wrappedValue: Value? {
+    public var wrappedValue: Value? {
         get { value }
 
         nonmutating set {
@@ -41,7 +41,7 @@ struct EncryptedAppStorage<Value: Codable>: DynamicProperty {
         }
     }
 
-    var projectedValue: Binding<Value?> {
+    public var projectedValue: Binding<Value?> {
         .init(
             get: { wrappedValue },
             set: { wrappedValue = $0 }
